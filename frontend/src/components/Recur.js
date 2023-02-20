@@ -140,6 +140,8 @@ export const Recur = ({ recur }) => {
       const startDate = recur.startDate;
       const recurEntries = recur.currMonth;
       let pickIndex = 0;
+      let cost = 0;
+      let quantity = 0;
 
       const cal = [];
       let currDate = 1;
@@ -162,6 +164,10 @@ export const Recur = ({ recur }) => {
                       obj.quantity === recur.quantity ? 'limegreen' : 'orange',
                   };
                 }
+
+                cost += obj.cost * obj.quantity;
+                quantity += obj.quantity;
+
                 pickIndex++;
               }
             }
@@ -178,25 +184,16 @@ export const Recur = ({ recur }) => {
         }
       }
 
+      if (cost && quantity) {
+        setTotalCost(cost);
+        setTotalQuantity(quantity);
+      }
+
       setCalendar(cal);
     };
 
     if (recur) {
       createCalendar();
-    }
-  }, [recur]);
-
-  useEffect(() => {
-    if (recur.currMonth) {
-      let cost = 0;
-      let quantity = 0;
-      for (const item of recur.currMonth) {
-        cost += item.cost * item.quantity;
-        quantity += item.quantity;
-      }
-
-      setTotalCost(cost);
-      setTotalQuantity(quantity);
     }
   }, [recur]);
 

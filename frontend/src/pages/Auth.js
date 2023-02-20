@@ -15,8 +15,6 @@ export const Auth = ({ type }) => {
   const location = useLocation();
   const isCreate = type === 'sign-up';
 
-  console.log('location.state', location.state);
-
   const setInput = (key, value) => {
     setFormState({ ...formState, [key]: value });
   };
@@ -29,7 +27,7 @@ export const Auth = ({ type }) => {
         navigate('/', { replace: true });
       }
     }
-  }, [user]);
+  }, [user, location, navigate]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +48,7 @@ export const Auth = ({ type }) => {
 
   return (
     <div className='auth-container'>
-      <Card title={type === 'sign-up' ? 'Create account' : 'Sign in'}>
+      <Card title={isCreate ? 'Create account' : 'Sign in'}>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
             <label htmlFor='email'>Email</label>
@@ -70,15 +68,13 @@ export const Auth = ({ type }) => {
               name='password'
               id='password'
               placeholder={
-                type === 'sign-up'
-                  ? 'Create your password'
-                  : 'Enter your password'
+                isCreate ? 'Create your password' : 'Enter your password'
               }
               value={formState.password}
               onChange={(e) => setInput('password', e.target.value)}
             />
           </div>
-          {type === 'sign-up' && (
+          {isCreate && (
             <div className='form-group'>
               <label htmlFor='name'>Name</label>
               <input
@@ -93,7 +89,7 @@ export const Auth = ({ type }) => {
           )}
           <div className='form-buttons'>
             <button className='btn btn-block btn-primary' type='submit'>
-              {type === 'sign-up' ? 'Create account' : 'Sign in'}
+              {isCreate ? 'Create account' : 'Sign in'}
             </button>
           </div>
         </form>
