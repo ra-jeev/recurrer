@@ -151,17 +151,19 @@ export const Recur = ({ recur }) => {
             (cal.length > 1 && currDate <= lastDate)
           ) {
             const obj = { date: currDate };
-            if (currDate >= startDate && pickIndex < recurEntries.length) {
-              obj.quantity = recurEntries[pickIndex].quantity;
-              obj.cost = recurEntries[pickIndex].cost;
-              obj.index = pickIndex;
-              if (obj.quantity) {
-                obj.style = {
-                  color:
-                    obj.quantity === recur.quantity ? 'limegreen' : 'orange',
-                };
+            if (recurEntries) {
+              if (currDate >= startDate && pickIndex < recurEntries.length) {
+                obj.quantity = recurEntries[pickIndex].quantity;
+                obj.cost = recurEntries[pickIndex].cost;
+                obj.index = pickIndex;
+                if (obj.quantity) {
+                  obj.style = {
+                    color:
+                      obj.quantity === recur.quantity ? 'limegreen' : 'orange',
+                  };
+                }
+                pickIndex++;
               }
-              pickIndex++;
             }
 
             cal[cal.length - 1].push(obj);
