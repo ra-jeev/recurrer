@@ -187,15 +187,17 @@ export const Recur = ({ recur }) => {
   }, [recur]);
 
   useEffect(() => {
-    let cost = 0;
-    let quantity = 0;
-    for (const item of recur.currMonth) {
-      cost += item.cost * item.quantity;
-      quantity += item.quantity;
-    }
+    if (recur.currMonth) {
+      let cost = 0;
+      let quantity = 0;
+      for (const item of recur.currMonth) {
+        cost += item.cost * item.quantity;
+        quantity += item.quantity;
+      }
 
-    setTotalCost(cost);
-    setTotalQuantity(quantity);
+      setTotalCost(cost);
+      setTotalQuantity(quantity);
+    }
   }, [recur]);
 
   const editRecurEntry = async (entry) => {
