@@ -41,7 +41,7 @@ const createRecur = async (req, res) => {
 
   const formatter = new Intl.DateTimeFormat('en', options);
   const userTime = new Date(formatter.format(date));
-  console.log('utcTime is', testTime.getTime());
+  console.log('utcTime is', date.getTime());
   console.log('formattedTime is', formatter.format(date));
   console.log('userTime is', userTime.getTime());
 
