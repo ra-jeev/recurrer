@@ -1,0 +1,113 @@
+.recur-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.recur-subtitle {
+  margin: 0;
+}
+
+.recur-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recur-details-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.recur-details-column h3 {
+  margin-bottom: 0.5rem;
+}
+
+.recur-details-column p {
+  margin: 0 0 0.25rem 0;
+}
+
+.recur-items-row {
+  display: flex;
+}
+
+.recur-item {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--font-color);
+  border-right: 1px solid var(--font-color);
+  position: relative;
+  min-height: 3rem;
+}
+
+.recur-item:first-of-type {
+  border-left: 1px solid var(--font-color);
+}
+
+.recur-items-row:last-of-type .recur-item {
+  border-bottom: 1px solid var(--font-color);
+}
+
+.recur-item-date,
+.recur-item-edit {
+  position: absolute;
+  top: 0.25rem;
+  color: lightgray;
+}
+
+.recur-item-date {
+  left: 0.25rem;
+  font-size: 11px;
+}
+
+.recur-item-edit {
+  right: 0.25rem;
+  cursor: pointer;
+}
+
+.recur-item-quantity {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.recur-item-edit:hover {
+  color: gray;
+}
+
+.recur-overlay {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0);
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s all ease-in-out;
+  visibility: hidden;
+}
+
+.animated-modal {
+  background-color: var(--dialog-bg);
+  visibility: visible;
+}
+
+.recur-edit-card {
+  overflow: hidden;
+  width: 22rem;
+  height: 0;
+  position: relative;
+  transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.recur-overlay.animated-modal .recur-edit-card {
+  height: 20rem;
+}
